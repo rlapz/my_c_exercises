@@ -135,17 +135,6 @@ get_size_list(List **list)
 	return num;
 }
 
-void
-print_list(List **list)
-{
-	List *tmp = *list;
-	while (tmp != NULL) {
-		if (tmp->data != NULL)
-			printf("%s", (int8_t*)tmp->data);
-		tmp = tmp->next;
-	}
-	puts("");
-}
 
 void
 clear_list(List **list)
