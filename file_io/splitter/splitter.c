@@ -35,7 +35,7 @@ split_by_number(char **argv)
 	size_t write_size	= 0;
 	ssize_t read_bytes	= 0;
 	ssize_t written_bytes	= 0;
-	struct stat file_stat	= {0};
+	struct stat file_stat;
 
 	if (stat(argv[1], &file_stat) < 0) {
 		perror(argv[1]);
