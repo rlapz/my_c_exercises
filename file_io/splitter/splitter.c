@@ -26,7 +26,7 @@ split_by_number(char **argv)
 {
 	int8_t is_success	= 0;
 	char filename[255]	= {0};
-	char buffer[BUFFER_SIZE] = {0};
+	unsigned char buffer[BUFFER_SIZE] = {0};
 	int byte_splitted	= 0;
 	int fd_read		= 0;
 	int fd_write		= 0;
