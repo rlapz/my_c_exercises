@@ -5,6 +5,10 @@
 char *
 ltrim(char *string)
 {
+	/* if (string == NULL || *string == '\0') */
+	if (string == NULL)
+		return NULL;
+
 	while (isspace(*string))
 		string++;
 	return (char*)string;
@@ -14,6 +18,9 @@ ltrim(char *string)
 char *
 rtrim(char *string)
 {
+	if (string == NULL)
+		return NULL;
+
 	char *end = string + strlen(string)-1;
 	while (isspace(*end)) {
 		*end = '\0';
@@ -26,6 +33,9 @@ rtrim(char *string)
 char *
 trim(char *string)
 {
+	if (string == NULL )
+		return NULL;
+
 	char *p1 = string;
 	char *p2 = p1;
 	char c;
