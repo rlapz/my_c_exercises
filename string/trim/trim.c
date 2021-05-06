@@ -3,7 +3,7 @@
 
 /* left trim */
 char *
-ltrim(char *string)
+ltrim(const char *string)
 {
 	while (isspace(*string))
 		string++;
