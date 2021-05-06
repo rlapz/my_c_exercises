@@ -3,7 +3,7 @@
 
 /* left trim */
 char *
-ltrim(char *string)
+ltrim(const char *string)
 {
 	/* if (string == NULL || *string == '\0') */
 	if (string == NULL)
