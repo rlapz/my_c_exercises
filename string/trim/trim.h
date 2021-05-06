@@ -5,7 +5,7 @@
 #include <string.h>
 #include <ctype.h>
 
-char *ltrim(char *string);
+char *ltrim(const char *string);
 char *rtrim(char *string);
 char *trim(char *string);
 
