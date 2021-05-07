@@ -5,8 +5,7 @@
 char *
 ltrim(const char *string)
 {
-	/* if (string == NULL || *string == '\0') */
-	if (string == NULL)
+	if (string == NULL || *string == '\0')
 		return NULL;
 
 	while (isspace(*string))
@@ -18,7 +17,7 @@ ltrim(const char *string)
 char *
 rtrim(char *string)
 {
-	if (string == NULL)
+	if (string == NULL || *string == '\0')
 		return NULL;
 
 	char *end = string + strlen(string)-1;
@@ -33,7 +32,7 @@ rtrim(char *string)
 char *
 trim(char *string)
 {
-	if (string == NULL )
+	if (string == NULL || *string == '\0')
 		return NULL;
 
 	char *p1 = string;
