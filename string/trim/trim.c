@@ -39,6 +39,7 @@ trim(char *string)
 	char *p2 = p1;
 	char c;
 	int count = 0;
+
 	while (*p1) {
 		if (isspace(*p1)) {
 			*p1 = '\0';

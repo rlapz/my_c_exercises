@@ -3,19 +3,15 @@
 char *
 new_string(void)
 {
-	char *new = calloc(sizeof(char), sizeof(char));
-	if (new == NULL)
-		fprintf(stderr, "Error create new string\n");
-	return new;
+	return calloc(sizeof(char), sizeof(char));
 }
 
 char *
 append_string(char **dest, const char *value)
 {
-	if (*dest == NULL) {
-		fprintf(stderr, "Error: String null\n");
+	if (*dest == NULL)
 		return NULL;
-	}
+
 	size_t len_value = strlen(value);
 	size_t len_dest = strlen(*dest);
 
@@ -33,10 +29,8 @@ char *
 insert_string(char **dest, const char *value,
 		size_t position)
 {
-	if (*dest == NULL) {
-		fprintf(stderr, "Error: String null\n");
+	if (*dest == NULL)
 		return NULL;
-	}
 
 	size_t len_dest = strlen(*dest);
 	size_t len_value = strlen(value);
@@ -61,10 +55,8 @@ insert_string(char **dest, const char *value,
 char *
 slice_string(char **dest, size_t start, size_t end)
 {
-	if (*dest == NULL) {
-		fprintf(stderr, "Error: String null\n");
+	if (*dest == NULL)
 		return NULL;
-	}
 
 	size_t len = strlen(*dest);
 	if (end > len)
