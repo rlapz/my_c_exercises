@@ -21,7 +21,7 @@ rtrim(char *string)
 		return NULL;
 
 	char *end = string + strlen(string)-1;
-	while (isspace(*end)) {
+	while (end > string && isspace(*end)) {
 		*end = '\0';
 		end--;
 	}
