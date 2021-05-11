@@ -77,19 +77,17 @@ void delete_last_list(List **list)
 	List *head = *list;
 	List *tmp = *list;
 
-	if (head != NULL) {
-		if (head->next != NULL) {
-			while (head->next->next != NULL)
-				head = head->next;
-			free(head->next);
-			head->next = NULL;
-		} else {
-			free(head);
-			head = NULL;
-			tmp = NULL;
-		}
-		(*list) = tmp;
+	if (head != NULL && head->next != NULL) {
+		while (head->next->next != NULL)
+			head = head->next;
+		free(head->next);
+		head->next = NULL;
+	} else {
+		free(head);
+		head = NULL;
+		tmp = NULL;
 	}
+	(*list) = tmp;
 }
 
 void delete_at_list(List **list, size_t at)
@@ -98,28 +96,27 @@ void delete_at_list(List **list, size_t at)
 	List *next_n = head->next;
 	List *last = NULL;
 
-	if (head != NULL) {
-		if (head->next != NULL) {
-			if (at < 1) {
-				free(head);
-				(*list) = next_n;
-			} else {
-				while (head->next->next != NULL) {
-					if (at <= 2)
-						break;
-					head = head->next;
-					at--;
-				}
-				next_n = head->next;
-				last = next_n->next;
-				free(next_n);
-				head->next = last;
-			}
-		} else {
+	if (head != NULL && head->next != NULL) {
+		if (at < 1) {
 			free(head);
-			(*list) = NULL;
+			(*list) = next_n;
+		} else {
+			while (head->next->next != NULL) {
+				if (at <= 2)
+					break;
+				head = head->next;
+				at--;
+			}
+			next_n = head->next;
+			last = next_n->next;
+			free(next_n);
+			head->next = last;
 		}
+	} else {
+		free(head);
+		(*list) = NULL;
 	}
+	
 
 }
 
