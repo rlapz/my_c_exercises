@@ -46,7 +46,8 @@ split_by_number(char **argv)
 	file_size = (size_t)file_stat.st_size;
 	/* tolerance 1 byte for prevent part file not fully written */
 	byte_splitted = ((int)file_size / split_to) +1; 
-	write_size = (size_t)(byte_splitted < BUFFER_SIZE ? byte_splitted : BUFFER_SIZE);
+	write_size = (size_t)(byte_splitted < BUFFER_SIZE ? 
+			byte_splitted : BUFFER_SIZE);
 
 	if ((fd_read = open(argv[1], O_RDONLY)) < 0) {
 		perror("Open file");
@@ -56,20 +57,22 @@ split_by_number(char **argv)
 	for (int iter = 1; iter <= split_to; iter++) {
 		snprintf(filename, 254, "%s.part%d", argv[1], iter);
 		if ((fd_write = open(filename, O_WRONLY|O_CREAT|O_TRUNC,
-						S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)) < 0) {
+				S_IRUSR|S_IWUSR|S_IRGRP|S_IROTH)) < 0) {
 			perror("Open file target");
 			is_success = -1;
 			break;
 		}
 		int tmp = byte_splitted;
 		while (tmp > 0) {
-			if ((read_bytes = read(fd_read, buffer, write_size)) < 0) {
+			if ((read_bytes = read(fd_read, buffer,
+							write_size)) < 0) {
 				perror("Read file");
 				is_success = -1;
 				goto cleanup;
 			}
 			if (read_bytes > 0) {
-				if ((written_bytes = write(fd_write, buffer, (size_t)read_bytes)) < 0) {
+				if ((written_bytes = write(fd_write, buffer,
+						(size_t)read_bytes)) < 0) {
 					perror("Write file");
 					is_success = -1;
 					goto cleanup;
