@@ -5,10 +5,7 @@
 char *
 ltrim(const char *string)
 {
-	if (string == NULL || *string == '\0')
-		return NULL;
-
-	while (isspace(*string))
+	while (*string && isspace((unsigned char)(*string)))
 		string++;
 	return (char*)string;
 }
@@ -17,11 +14,8 @@ ltrim(const char *string)
 char *
 rtrim(char *string)
 {
-	if (string == NULL || *string == '\0')
-		return NULL;
-
 	char *end = string + strlen(string)-1;
-	while (end > string && isspace(*end)) {
+	while (end > string && isspace((unsigned char)(*end))) {
 		*end = '\0';
 		end--;
 	}
@@ -32,16 +26,13 @@ rtrim(char *string)
 char *
 trim(char *string)
 {
-	if (string == NULL || *string == '\0')
-		return NULL;
-
 	char *p1 = string;
 	char *p2 = p1;
 	char c;
 	int count = 0;
 
 	while (*p1) {
-		if (isspace(*p1)) {
+		if (isspace((unsigned char)(*p1))) {
 			*p1 = '\0';
 			p1++;
 			count++;
